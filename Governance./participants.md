@@ -1,6 +1,6 @@
 Co-chairs and facilitors
 ==
-```
+
 | name                                     | email                     | role        |
 |------------------------------------------|---------------------------|-------------|
 | Gustavo Machado (NC State University)    | gmachad@ncsu.edu          | Co-chair    |
@@ -8,8 +8,7 @@ Co-chairs and facilitors
 | Sara McReynolds (Kansas SAHO)            | faSara.mcreynolds@ks.gov  | Co-chair    |
 | Susan Culp                               | sculp@me.com              | Facilitator |
 | Ryan Scholz (Oregon SAHO)                | rscholz@oda.state.or.us   | Facilitator |
-```
-```
+
 | state                  	| email                                   	| class    	|
 |------------------------	|-----------------------------------------	|----------	|
 | Alabama                	| tony.frazier@agi.alabama.gov            	| SAHO     	|
@@ -87,4 +86,4 @@ Co-chairs and facilitors
 | Fred G Bourgeois       	| fred.g.bourgeois@usda.gov               	| Federal  	|
 | Sunny Geiser-Novotny   	| sunny.geiser-novotny@usda.gov           	| Federal  	|
 | Minnesota              	| stacydvmphp@gmail.com                   	| Federal  	|
-```
+
