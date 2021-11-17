@@ -58,6 +58,7 @@ Co-chairs and facilitors
 | Tennessee              	| douglas.balthaser@tn.gov                	| SAHO     	|
 | Texas                  	| russell.iselt@tahc.texas.gov            	| SAHO     	|
 | Texas                  	| katie.dickerson@tahc.texas.gov          	| SAHO     	|
+| Texas                  	| bob.young@tahc.texas.gov                	| SAHO     	|
 | Utah                   	| djtaylor@utah.gov                       	| SAHO     	|
 | Utah                   	| amandaprice@utah.gov                    	| SAHO     	|
 | Vermont                	| Kristin.haas@vermont.gov                	| SAHO     	|
