@@ -2,7 +2,7 @@
 
 Permit Data Standards
 
-[Committee Membership]()
+[Committee Membership](https://github.com/AAVLD-USAHA-ITStandards/Permit/blob/main/Governance/participants.md)
 
 A few words on the documentation approach: 
  
