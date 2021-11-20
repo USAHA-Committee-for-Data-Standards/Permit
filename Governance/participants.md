@@ -1,4 +1,4 @@
-Co-chairs and facilitors
+## Permit Data Standards Co-chairs and facilitors
 ==
 
 | name                                     | email                     | role        |
