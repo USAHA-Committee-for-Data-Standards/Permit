@@ -14,5 +14,5 @@ The **Releases** section of this project contains the numbered release commits. 
 
 The **master** branch contains the current release *plus* any pending changes that have been approved by the committee and are awaiting release.
 
-The **pendingChanges** branch contains the current release *plus* any pending changes both approved and currently under consideration. Each commit should corresponde as much as possible to one proposed solution to one issue.  
+The **pending changes** branch contains the current release *plus* any pending changes both approved and currently under consideration. Each commit should corresponde as much as possible to one proposed solution to one issue.  
 
