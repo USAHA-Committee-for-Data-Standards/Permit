@@ -14,7 +14,6 @@
 | Alabama                	| tony.frazier@agi.alabama.gov            	| SAHO     	|
 | Alabama                	| misty.edmondson@agi.alabama.gov         	| SAHO     	|
 | Alaska                 	| bob.gerlach@alaska.gov                  	| SAHO     	|
-| Arizona                	| pmundschenk@azda.gov                    	| SAHO     	|
 | Arkansas               	| randolph.chick@agriculture.arkansas.gov 	| SAHO     	|
 | Arkansas               	| john.nilz@agriculture.arkansas.gov      	| SAHO     	|
 | Colorado               	| maggie.baldwin@state.co.us              	| SAHO     	|
