@@ -35,7 +35,6 @@
 | Louisiana              	| tbankester@ldaf.state.la.us             	| SAHO     	|
 | Louisiana              	| dmyrick@ldaf.state.la.us                	| SAHO     	|
 | Michigan               	| collinsc3@michigan.gov                  	| SAHO     	|
-| Minnesota              	| stacey.schwabenlander@state.mn.us       	| SAHO     	|
 | Minnesota              	| carissa.allen@state.mn.us               	| SAHO     	|
 | Mississippi            	| jimw@mdac.ms.gov                        	| SAHO     	|
 | Missouri               	| steve.strubberg@mda.mo.gov              	| SAHO     	|
