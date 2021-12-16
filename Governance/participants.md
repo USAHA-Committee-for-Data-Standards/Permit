@@ -45,6 +45,8 @@
 | New Jersey             	| manoel.tamassia@ag.nj.gov               	| SAHO     	|
 | New Mexico             	| ralph.zimmerman@state.nm.us             	| SAHO     	|
 | North Dakota           	| sbailey@nd.gov                          	| SAHO     	|
+| North Carolina          | Catherine.Harris@ncagr.gov               	| SAHO     	|
+| North Carolina        	| james.kittrell@ncagr.gov                 	| SAHO     	|
 | South Carolina         	| mneault@clemson.edu                     	| SAHO     	|
 | South Carolina         	| mmarti5@clemson.edu                     	| SAHO     	|
 | Ohio                   	| cindy.bodie@agri.ohio.gov               	| SAHO     	|
