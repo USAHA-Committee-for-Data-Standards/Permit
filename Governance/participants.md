@@ -81,6 +81,8 @@
 | John Kucek             	| johnku@acclaimsystems.com               	| Vendors  	|
 | Mitzy Torres           	| mtorres@acclaimsystems.onmicrosoft.com  	| Vendors  	|
 | Michael McGrath        	| mmcgrath@tracefirst.com                 	| Vendors  	|
+| KJ Osenenko            	| kosenenko@tracefirst.com                 	| Vendors  	|
+| Kathy Finnerty        	| kfinnerty@tracefirst.com                 	| Vendors  	|
 | Rich Baca              	| orlando.r.baca@usda.gov                 	| Federal  	|
 | Sarah Tomlinson        	| sarah.m.tomlinson@usda.gov              	| Federal  	|
 | Jodi Venden Eng        	| Jodi.l.vandeneng@usda.gov               	| Federal  	|
