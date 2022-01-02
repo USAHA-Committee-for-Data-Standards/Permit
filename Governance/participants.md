@@ -36,6 +36,7 @@
 | Louisiana              	| dmyrick@ldaf.state.la.us                	| SAHO     	|
 | Michigan               	| collinsc3@michigan.gov                  	| SAHO     	|
 | Minnesota              	| carissa.allen@state.mn.us               	| SAHO     	|
+| Minnesota              	| Staceydvmmph@gmail.com                   	| SAHO     	|
 | Mississippi            	| jimw@mdac.ms.gov                        	| SAHO     	|
 | Missouri               	| steve.strubberg@mda.mo.gov              	| SAHO     	|
 | Missouri               	| bill.pittenger@mda.mo.gov               	| SAHO     	|
