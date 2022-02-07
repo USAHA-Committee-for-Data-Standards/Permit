@@ -89,4 +89,6 @@
 | Fred G Bourgeois       	| fred.g.bourgeois@usda.gov               	| Federal  	|
 | Sunny Geiser-Novotny   	| sunny.geiser-novotny@usda.gov           	| Federal  	|
 | Minnesota              	| stacydvmphp@gmail.com                   	| Federal  	|
-
+| The National Milk Producers Federation   | mhanselman@nmpf.org      | Industry	|
+| The National Milk Producers Federation   | jjonker@nmpf.org         | Industry	|
+| The National Milk Producers Federation   | dbw@preventalytics.com   | Industry	|
