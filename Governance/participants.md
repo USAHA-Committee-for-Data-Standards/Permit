@@ -92,3 +92,6 @@
 | The National Milk Producers Federation   | mhanselman@nmpf.org      | Industry	|
 | The National Milk Producers Federation   | jjonker@nmpf.org         | Industry	|
 | The National Milk Producers Federation   | dbw@preventalytics.com   | Industry	|
+| Swine Industry                   | donna.drebes@seaboardfoods.com   | Industry	|
+| Swine Industry                   | ian.levis@seaboardfoods.com      | Industry	|
+| Swine Industry                   | luc.dufresne@seaboardfoods.com   | Industry	|
