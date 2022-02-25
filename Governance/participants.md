@@ -95,3 +95,4 @@
 | Swine Industry                   | donna.drebes@seaboardfoods.com   | Industry	|
 | Swine Industry                   | ian.levis@seaboardfoods.com      | Industry	|
 | Swine Industry                   | luc.dufresne@seaboardfoods.com   | Industry	|
+| Peter Mundschenk                   | drpmundschenk@gmail.com   | Industry	|
