@@ -5,9 +5,9 @@
 |------------------------------------------|---------------------------|-------------|
 | Gustavo Machado (NC State University)    | gmachad@ncsu.edu          | Co-chair    |
 | David Hecimovich (Washington State SAHO) | dhecimovich@agr.wa.gov    | Co-chair    |
-| Sara McReynolds (Kansas SAHO)            | faSara.mcreynolds@ks.gov  | Co-chair    |
+| Sara McReynolds (Kansas SAHO)            | Sara.mcreynolds@ks.gov    | Co-chair    |
 | Susan Culp                               | sculp@me.com              | Facilitator |
-| Ryan Scholz (Oregon SAHO)                | rscholz@oda.state.or.us   | Facilitator |
+
 
 | state                  	| email                                   	| class    	|
 |------------------------	|-----------------------------------------	|----------	|
