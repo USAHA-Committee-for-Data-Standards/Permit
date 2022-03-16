@@ -96,3 +96,6 @@
 | Swine Industry                   | ian.levis@seaboardfoods.com      | Industry	|
 | Swine Industry                   | luc.dufresne@seaboardfoods.com   | Industry	|
 | Peter Mundschenk                   | drpmundschenk@gmail.com   | Industry	|
+| Peter Mundschenk                   | drpmundschenk@gmail.com   | Industry	|
+| Mary Battrell                      | mbattrell@smithfield.com    | Industry	|
+| Joseph Fent                           | jfent@smithfield.com    | Industry	|
