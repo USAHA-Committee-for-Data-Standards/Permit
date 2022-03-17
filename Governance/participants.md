@@ -99,3 +99,5 @@
 | Peter Mundschenk                   | drpmundschenk@gmail.com   | Industry	|
 | Mary Battrell                      | mbattrell@smithfield.com    | Industry	|
 | Joseph Fent                           | jfent@smithfield.com    | Industry	|
+| Giovani Trevisan                          | trevisan@iastate.edu    | USAHA	|
+| Maria Cooper                    | MCooper1@boah.in.gov    | USAHA		|
