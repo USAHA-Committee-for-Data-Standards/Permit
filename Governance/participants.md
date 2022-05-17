@@ -100,3 +100,4 @@
 | Joseph Fent                           | jfent@smithfield.com    | Industry	|
 | Giovani Trevisan                          | trevisan@iastate.edu    | USAHA	|
 | Maria Cooper                    | MCooper1@boah.in.gov    | USAHA		|
+|Stacey Schwabenlander |Stacey.Schwabenlander@USDA.gov| USDA
