@@ -1,0 +1,608 @@
+<?xml version="1.1" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning"
+           vc:minVersion="1.1"
+           elementFormDefault="qualified"
+           version="1.0" >
+
+  <xs:annotation>
+    <xs:documentation>VERSION IN DEVELOPMENT</xs:documentation>
+  </xs:annotation>
+
+  <!-- BEGIN Document Element -->
+  <xs:element name="movementPermit">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="incidentCode"           type="NonBlankString"      minOccurs="1" maxOccurs="1" />
+        <xs:element name="applicationDate"        type="ZonedDateTime"       minOccurs="1" maxOccurs="1" />
+        <xs:element name="shipmentDateBegin"      type="ZonedDateTime"       minOccurs="1" maxOccurs="1" />
+        <xs:element name="shipmentDateEnd"        type="ZonedDateTime"       minOccurs="1" maxOccurs="1" />
+        <xs:element name="originInformation"      type="ContactInformation"  minOccurs="1" maxOccurs="1" />
+        <xs:element name="destinationInformation" type="ContactInformation"  minOccurs="1" maxOccurs="1" />
+        <xs:element name="movementInformation"    type="MovementInformation" minOccurs="1" maxOccurs="1" />
+        <xs:element name="ownerCertification"     type="OwnerCertification"  minOccurs="1" maxOccurs="1" />
+        <xs:element name="stateApproval"          type="StateApproval"       minOccurs="1" maxOccurs="1" />
+        <xs:element name="truck"                  type="Truck"               minOccurs="1" maxOccurs="1" />
+        <xs:element name="notes"                  type="xs:string"           minOccurs="0" maxOccurs="1" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <!-- END Document Element -->
+
+  <xs:complexType name="ContactInformation">
+    <xs:annotation>
+      <xs:documentation>
+        Information about person at the origin/destination of the animals
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <!-- FIXME: `businessName` is ambiguous, should it be farmName or companyName? -->
+      <xs:element name="businessName"            type="NonBlankString" minOccurs="1" maxOccurs="1" />
+      <xs:element name="firstName"               type="NonBlankString" minOccurs="1" maxOccurs="1" />
+      <xs:element name="lastName"                type="NonBlankString" minOccurs="1" maxOccurs="1" />
+      <xs:element name="phone"                   type="PhoneNumber"    minOccurs="1" maxOccurs="1" />
+      <xs:element name="physicalAdressOfAnimals" type="Address"        minOccurs="1" maxOccurs="1" />
+      <xs:element name="premStatus"              type="PremStatus"     minOccurs="1" maxOccurs="1" />
+      <xs:element name="premiseID"               type="PremID"         minOccurs="1" maxOccurs="1" />
+      <xs:element name="consignorAddress"        type="Address"        minOccurs="0" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="Address">
+    <xs:sequence>
+      <xs:element name="address" type="NonBlankString" minOccurs="1" maxOccurs="1" />
+      <xs:element name="city"    type="NonBlankString" minOccurs="1" maxOccurs="1" />
+      <xs:element name="state"   type="StateCodeType"  minOccurs="1" maxOccurs="1" />
+      <xs:element name="zipCode" type="Zipcode"        minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="MovementInformation">
+    <xs:sequence>
+      <xs:element name="amount"                   type="Amount"             minOccurs="1" maxOccurs="1" />
+      <xs:element name="corporatedAccount"        type="NonBlankString"     minOccurs="1" maxOccurs="1" />
+      <xs:element name="amountOfShipements"       type="AmountPerPeriod"    minOccurs="1" maxOccurs="1" />
+      <xs:element name="amountOfUnitsPerShipment" type="xs:positiveInteger" minOccurs="1" maxOccurs="1" />
+      <xs:element name="itemsToPermit"            type="PermitItems"        minOccurs="1" maxOccurs="1" />
+      <xs:element name="movingTo"                 type="MovementLocation"   minOccurs="1" maxOccurs="1" />
+      <xs:element name="purpose"                  type="MovementPurpose"    minOccurs="1" maxOccurs="1" />
+      <xs:element name="describeOtherPurpose"     type="NonBlankString"     minOccurs="0" maxOccurs="1" />
+      <xs:element name="speciesOrClass"           type="Species"            minOccurs="1" maxOccurs="1" />
+      <xs:element name="describeOtherSpecies"     type="NonBlankString"     minOccurs="0" maxOccurs="1" />
+      <xs:element name="cvi"                      type="xs:string"          minOccurs="0" maxOccurs="1" />
+      <xs:element name="vaccinationStatus"        type="xs:string"          minOccurs="0" maxOccurs="1" />
+      <xs:element name="tests"                    type="TestList"           minOccurs="0" maxOccurs="1" />
+    </xs:sequence>
+
+    <xs:assert test="not(purpose = 'OTHER') or describeOtherPurpose">
+      <xs:annotation>
+        <xs:documentation>
+          If the movement purpose is not contained in the MovementPurpose
+          enumeration, then describeOtherPurpose has to be set
+        </xs:documentation>
+      </xs:annotation>
+    </xs:assert>
+
+    <xs:assert test="not(speciesOrClass = 'OTHER') or describeOtherSpecies">
+      <xs:annotation>
+        <xs:documentation>
+          If the movement purpose is not contained in the MovementPurpose
+          enumeration, then describeOtherPurpose has to be set
+        </xs:documentation>
+      </xs:annotation>
+    </xs:assert>
+  </xs:complexType>
+
+  <xs:complexType name="Amount">
+    <xs:sequence>
+      <xs:element name="quantity" type="xs:positiveInteger" minOccurs="1" maxOccurs="1" />
+      <xs:element name="unit"     type="Unit"               minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="AmountPerPeriod">
+    <xs:sequence>
+      <xs:element name="quantity"   type="xs:positiveInteger" minOccurs="1" maxOccurs="1" />
+      <xs:element name="periodUnit" type="PeriodUnit"         minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:simpleType name="MovementLocation">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="INTO_CONTROL_AREA" />
+      <xs:enumeration value="OUT_CONTROL_AREA" />
+      <xs:enumeration value="WITHIN_CONTROL_AREA" />
+      <xs:enumeration value="CONTROL_AREA_TO_CONTROL_AREA" />
+      <xs:enumeration value="FREE_AREA_TO_FREE_AREA" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="MovementPurpose">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="DIRECT_TO_FARM" />
+      <xs:enumeration value="DIRECT_TO_SLAUGHTER" />
+      <xs:enumeration value="IN_COMMERCE" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:complexType name="OwnerCertification">
+    <xs:sequence>
+      <xs:element name="dateTime"           type="ZonedDateTime"  minOccurs="1" maxOccurs="1" />
+      <xs:element name="representativeName" type="NonBlankString" minOccurs="1" maxOccurs="1" />
+      <xs:element name="address"            type="Address"        minOccurs="1" maxOccurs="1" />
+      <xs:element name="phone"              type="PhoneNumber"    minOccurs="1" maxOccurs="1" />
+      <xs:element name="approvingAuthority" type="NonBlankString" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:simpleType name="PeriodUnit">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="HOURS" />
+      <xs:enumeration value="DAYS" />
+      <xs:enumeration value="WEEKS" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="PremStatus">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="FREE" />
+      <xs:enumeration value="MONITORED" />
+      <xs:enumeration value="AT_RISK" />
+      <xs:enumeration value="VACCINATED" />
+      <xs:enumeration value="SUSPECT" />
+      <xs:enumeration value="CONTACT" />
+      <xs:enumeration value="INFECTED" />
+    </xs:restriction>
+  </xs:simpleType>
+
+
+  <xs:simpleType name="PermitItems">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="GROUPS_OF_ANIMALS" />
+      <xs:enumeration value="IDENTIFIABLE_ANIMAL_GROUPS" />
+      <xs:enumeration value="ANIMALS_WHIOUT_ID" />
+      <xs:enumeration value="INDIVIDUALLY_IDENFIED_ANIMALS" />
+      <xs:enumeration value="FEED" />
+      <xs:enumeration value="PRODUCT" />
+      <xs:enumeration value="SEMEM_EMBRYOS" />
+      <xs:enumeration value="COMPOST" />
+      <xs:enumeration value="TRUCKS_TRAILERS" />
+      <xs:enumeration value="MILK" />
+      <xs:enumeration value="MANURE" />
+      <xs:enumeration value="HARY_FORAGE" />
+      <xs:enumeration value="WATER" />
+      <xs:enumeration value="OTHER" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="Species">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="BULK_FEED" />
+      <xs:enumeration value="CATTLE_BEEF" />
+      <xs:enumeration value="CATTLE_BREEDING" />
+      <xs:enumeration value="CATTLE_DAIRY" />
+      <xs:enumeration value="CATTLE_FEEDER" />
+      <xs:enumeration value="CATTLE_MARKET" />
+      <xs:enumeration value="CATTLE_SLAUGHTER" />
+      <xs:enumeration value="EGGS" />
+      <xs:enumeration value="GOATS" />
+      <xs:enumeration value="MANURE" />
+      <xs:enumeration value="MILK" />
+      <xs:enumeration value="MILK_RAW" />
+      <xs:enumeration value="POULTRY" />
+      <xs:enumeration value="SHEEP" />
+      <xs:enumeration value="SWINE_BREEDING" />
+      <xs:enumeration value="SWINE_CULL" />
+      <xs:enumeration value="SWINE_FEEDERS" />
+      <xs:enumeration value="SWINE_MARKET" />
+      <xs:enumeration value="SWINE_SLAUGHTER" />
+      <xs:enumeration value="SWINE_WEANED_PIGLETS" />
+      <xs:enumeration value="OTHER" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:complexType name="StateApproval">
+    <xs:sequence>
+      <xs:element name="approvalDate" type="ZonedDateTime"  minOccurs="1" maxOccurs="1" />
+      <xs:element name="permit"       type="NonBlankString" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="TestList">
+    <xs:sequence>
+      <xs:element name="test" type="TestUnit" minOccurs="0" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="TestUnit">
+    <xs:sequence>
+      <xs:element name="collectionDate" type="ZonedDateTime"  minOccurs="1" maxOccurs="1" />
+      <xs:element name="result"         type="NonBlankString" minOccurs="1" maxOccurs="1" />
+      <xs:element name="accession"      type="NonBlankString" minOccurs="1" maxOccurs="1" />
+      <xs:element name="laboratory"     type="NonBlankString" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="Truck">
+    <xs:sequence>
+      <xs:element name="routeAcceptable"         type="NonBlankString" minOccurs="1" maxOccurs="1" />
+      <xs:element name="biosecurityRequirements" type="NonBlankString" minOccurs="1" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:simpleType name="Unit">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="HEAD" />
+      <xs:enumeration value="LOAD" />
+      <xs:enumeration value="GROUP" />
+      <xs:enumeration value="GAL" />
+      <xs:enumeration value="LIBS" />
+      <xs:enumeration value="TONS" />
+      <xs:enumeration value="BALES" />
+      <xs:enumeration value="OTHER" />
+    </xs:restriction>
+  </xs:simpleType>
+
+
+  <!-- BEGIN Util types -->
+  <xs:simpleType name="ZonedDateTime">
+    <xs:restriction base="xs:dateTime">
+      <xs:explicitTimezone value="required" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="NonBlankString">
+    <xs:annotation>
+      <xs:documentation>
+              Requires a string with at least one non-whitespace character.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1" />
+      <xs:pattern   value=".*[^\s].*" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="PhoneNumber">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="\([0-9]{3}\) [0-9]{3}-[0-9]{4}" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="PremID">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="\w{7}" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!--
+     Type definiton obtained from:
+     https://github.com/AAVLD-USAHA-ITStandards/eCVI/blob/96ad415de93bcd4c124e53fdf8ebe4b204765daa/Normative%20standard/ecvi2.xsd#L1280
+     -->
+  <xs:simpleType name="StateCodeType">
+    <xs:annotation>
+      <xs:documentation>State Code includes territories, APO addresses, etc. Does NOT include
+            Canadian provinces or Mexican states.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="AA">
+        <xs:annotation>
+          <xs:documentation>Military postal system in the Americas</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="AE">
+        <xs:annotation>
+          <xs:documentation>Military postal system in Europe Africa and
+                    Canada</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="AK">
+        <xs:annotation>
+          <xs:documentation>Alaska</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="AL">
+        <xs:annotation>
+          <xs:documentation>Alabama</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="AP">
+        <xs:annotation>
+          <xs:documentation>Military postal system in the Pacific</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="AR">
+        <xs:annotation>
+          <xs:documentation>Arkansas</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="AS">
+        <xs:annotation>
+          <xs:documentation>American Samoa</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="AZ">
+        <xs:annotation>
+          <xs:documentation>Arizona</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="CA">
+        <xs:annotation>
+          <xs:documentation>California</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="CO">
+        <xs:annotation>
+          <xs:documentation>Colorado</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="CT">
+        <xs:annotation>
+          <xs:documentation>Connecticut</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="DC">
+        <xs:annotation>
+          <xs:documentation>Washington District of Columbia</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="DE">
+        <xs:annotation>
+          <xs:documentation>Delaware</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="FL">
+        <xs:annotation>
+          <xs:documentation>Florida</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="FM">
+        <xs:annotation>
+          <xs:documentation>Federated States of Micronesia</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="GA">
+        <xs:annotation>
+          <xs:documentation>Georgia</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="GU">
+        <xs:annotation>
+          <xs:documentation>Guam</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="HI">
+        <xs:annotation>
+          <xs:documentation>Hawaii</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="IA">
+        <xs:annotation>
+          <xs:documentation>Iowa</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ID">
+        <xs:annotation>
+          <xs:documentation>Idaho</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="IL">
+        <xs:annotation>
+          <xs:documentation>Illinois</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="IN">
+        <xs:annotation>
+          <xs:documentation>Indiana</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="KS">
+        <xs:annotation>
+          <xs:documentation>Kansas</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="KY">
+        <xs:annotation>
+          <xs:documentation>Kentucky</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="LA">
+        <xs:annotation>
+          <xs:documentation>Louisiana</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="MA">
+        <xs:annotation>
+          <xs:documentation>Massachusetts</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="MD">
+        <xs:annotation>
+          <xs:documentation>Maryland</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ME">
+        <xs:annotation>
+          <xs:documentation>Maine</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="MH">
+        <xs:annotation>
+          <xs:documentation>Marshall Islands</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="MI">
+        <xs:annotation>
+          <xs:documentation>Michigan</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="MN">
+        <xs:annotation>
+          <xs:documentation>Minnesota</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="MO">
+        <xs:annotation>
+          <xs:documentation>Missouri</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="MP">
+        <xs:annotation>
+          <xs:documentation>Northern Mariana Islands</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="MS">
+        <xs:annotation>
+          <xs:documentation>Mississippi</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="MT">
+        <xs:annotation>
+          <xs:documentation>Montana</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="NC">
+        <xs:annotation>
+          <xs:documentation>North Carolina</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ND">
+        <xs:annotation>
+          <xs:documentation>North Dakota</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="NE">
+        <xs:annotation>
+          <xs:documentation>Nebraska</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="NH">
+        <xs:annotation>
+          <xs:documentation>New Hampshire</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="NJ">
+        <xs:annotation>
+          <xs:documentation>New Jersey</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="NM">
+        <xs:annotation>
+          <xs:documentation>New Mexico</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="NV">
+        <xs:annotation>
+          <xs:documentation>Nevada</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="NY">
+        <xs:annotation>
+          <xs:documentation>New York</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="OH">
+        <xs:annotation>
+          <xs:documentation>Ohio</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="OK">
+        <xs:annotation>
+          <xs:documentation>Oklahoma</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="OR">
+        <xs:annotation>
+          <xs:documentation>Oregon</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="PA">
+        <xs:annotation>
+          <xs:documentation>Pennsylvania</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="PR">
+        <xs:annotation>
+          <xs:documentation>Puerto Rico</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="PW">
+        <xs:annotation>
+          <xs:documentation>Palau</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="RI">
+        <xs:annotation>
+          <xs:documentation>Rhode Island</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="SC">
+        <xs:annotation>
+          <xs:documentation>South Carolina</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="SD">
+        <xs:annotation>
+          <xs:documentation>South Dakota</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="TN">
+        <xs:annotation>
+          <xs:documentation>Tennessee</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="TX">
+        <xs:annotation>
+          <xs:documentation>Texas</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="UT">
+        <xs:annotation>
+          <xs:documentation>Utah</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="VA">
+        <xs:annotation>
+          <xs:documentation>Virginia</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="VI">
+        <xs:annotation>
+          <xs:documentation>U.S. Virgin Islands</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="VT">
+        <xs:annotation>
+          <xs:documentation>Vermont</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="WA">
+        <xs:annotation>
+          <xs:documentation>Washington</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="WI">
+        <xs:annotation>
+          <xs:documentation>Wisconsin</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="WV">
+        <xs:annotation>
+          <xs:documentation>West Virginia</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="WY">
+        <xs:annotation>
+          <xs:documentation>Wyoming</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="Zipcode">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[0-9]{5}(-[0-9]{4})?" />
+    </xs:restriction>
+  </xs:simpleType>
+  <!-- END Util types -->
+</xs:schema>
