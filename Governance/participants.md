@@ -48,7 +48,6 @@
 | North Carolina          | Catherine.Harris@ncagr.gov               	| SAHO     	|
 | North Carolina        	| james.kittrell@ncagr.gov                 	| SAHO     	|
 | South Carolina         	| mneault@clemson.edu                     	| SAHO     	|
-| South Carolina         	| mmarti5@clemson.edu                     	| SAHO     	|
 | Ohio                   	| cindy.bodie@agri.ohio.gov               	| SAHO     	|
 | Oklahoma               	| Alicia.Gorczyca-Southerland@ag.ok.gov   	| SAHO     	|
 | Oregon                 	| rscholz@oda.state.or.us                 	| SAHO     	|
