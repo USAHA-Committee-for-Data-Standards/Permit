@@ -41,10 +41,10 @@
       <unit>HEAD</unit>
     </amount>
     <corporatedAccount>1</corporatedAccount>
-    <amountOfShipements>
+    <amountOfShipments>
       <quantity>1</quantity>
       <periodUnit>DAYS</periodUnit>
-    </amountOfShipements>
+    </amountOfShipments>
 
     <amountOfUnitsPerShipment>761</amountOfUnitsPerShipment>
     <itemsToPermit>GROUPS_OF_ANIMALS</itemsToPermit>
