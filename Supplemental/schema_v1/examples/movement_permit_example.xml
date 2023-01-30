@@ -1,0 +1,121 @@
+<?xml version="1.0"?>
+
+<?xml-model href="../src/movement_permit.xsd"?>
+
+<MovementPermit
+  xmlns="http://www.usaha.org/xmlns/movementPermit"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:ecvi="http://www.usaha.org/xmlns/ecvi2"
+
+  RequestID="f03591e3-d36b-4913-8030-7def502e8409"
+  PermitStatus="ISSUED"
+  PermitNumber="123"
+  ShipmentDateBegin="2022-07-05"
+  ShipmentDateEnd="2022-07-05" >
+  <ecvi:Origin>
+    <ecvi:PremId>00AT7XX</ecvi:PremId>
+    <ecvi:PremName>Some Premises</ecvi:PremName>
+    <ecvi:Address>
+      <ecvi:Line1>Some street</ecvi:Line1>
+      <ecvi:Line2>Some street</ecvi:Line2>
+      <ecvi:Town>Raleigh</ecvi:Town>
+      <ecvi:County>Wake County</ecvi:County>
+      <ecvi:State>NC</ecvi:State>
+      <ecvi:ZIP>27607</ecvi:ZIP>
+      <ecvi:GeoPoint Latitude="46.3843" Longitude="-108.6386" />
+    </ecvi:Address>
+
+    <ecvi:Person>
+      <ecvi:NameParts>
+        <ecvi:BusinessName>Company A</ecvi:BusinessName>
+        <ecvi:FirstName>Gustavo</ecvi:FirstName>
+        <ecvi:LastName>Machado</ecvi:LastName>
+        <ecvi:OtherName></ecvi:OtherName>
+      </ecvi:NameParts>
+      <ecvi:Phone Number="6124238848" Type="Cellphone" />
+      <ecvi:Email Address="test@test.com" />
+    </ecvi:Person>
+  </ecvi:Origin>
+
+  <ecvi:Destination>
+    <ecvi:PremId>00AT7XX</ecvi:PremId>
+    <ecvi:PremName>Some Premises</ecvi:PremName>
+    <ecvi:Address>
+      <ecvi:Line1>1000 Some street</ecvi:Line1>
+      <ecvi:Town>Oklahoma City</ecvi:Town>
+      <ecvi:State>OK</ecvi:State>
+      <ecvi:ZIP>73008</ecvi:ZIP>
+      <ecvi:GeoPoint Latitude="46.3843" Longitude="-108.6386" />
+    </ecvi:Address>
+  </ecvi:Destination>
+
+  <MovementInformation>
+    <TotalQuantity>
+      <Quantity>1900</Quantity>
+      <Unit>Head</Unit>
+    </TotalQuantity>
+    <PermitItems>Groups of animals</PermitItems>
+    <MovementType>Into control area</MovementType>
+    <MovementPurpose>Direct to farm</MovementPurpose>
+    <ecvi:SpeciesCode Code="POR" />
+  </MovementInformation>
+
+  <OwnerCertification>
+    <DateTime>2022-07-05T00:00:00Z</DateTime>
+    <Representative>
+      <ecvi:Address>
+        <ecvi:Line1>Some street</ecvi:Line1>
+        <ecvi:Town> Raleigh </ecvi:Town>
+        <ecvi:State>NC</ecvi:State>
+        <ecvi:ZIP>27607</ecvi:ZIP>
+      </ecvi:Address>
+      <ecvi:Person>
+        <ecvi:Name>Representative</ecvi:Name>
+        <ecvi:Phone Number="6124238848" Type="Unknown" />
+      </ecvi:Person>
+    </Representative>
+    <ApprovingAuthority>Authority</ApprovingAuthority>
+  </OwnerCertification>
+
+  <Transportation>
+    <RouteDescription>Will take 4040 all the way</RouteDescription>
+    <BiosecurityRequirements>Truck clean before pick up</BiosecurityRequirements>
+  </Transportation>
+
+  <ecvi:Statements>Farm never broke with PRRSV</ecvi:Statements>
+
+  <OriginStateApproval>
+    <ApprovalDate>2022-07-05T00:00:00Z</ApprovalDate>
+    <Representative>
+      <ecvi:Address>
+        <ecvi:Line1>Some street</ecvi:Line1>
+        <ecvi:Town> Raleigh </ecvi:Town>
+        <ecvi:State>NC</ecvi:State>
+        <ecvi:ZIP>27607</ecvi:ZIP>
+      </ecvi:Address>
+      <ecvi:Person>
+        <ecvi:Name>SAHO NAME</ecvi:Name>
+        <ecvi:Phone Number="6124238848" Type="Unknown" />
+      </ecvi:Person>
+    </Representative>
+    <ApprovingAuthority>NCDA</ApprovingAuthority>
+  </OriginStateApproval>
+
+  <DestinationStateApproval>
+    <ApprovalDate>2022-07-06T00:00:00Z</ApprovalDate>
+    <Representative>
+      <ecvi:Address>
+        <ecvi:Line1>Some street</ecvi:Line1>
+        <ecvi:Town>Oklahoma City</ecvi:Town>
+        <ecvi:State>OK</ecvi:State>
+        <ecvi:ZIP>73008</ecvi:ZIP>
+      </ecvi:Address>
+      <ecvi:Person>
+        <ecvi:Name>OK STATE VET</ecvi:Name>
+        <ecvi:Phone Number="4057679400" Type="Unknown" />
+      </ecvi:Person>
+    </Representative>
+    <ApprovingAuthority>OKDA</ApprovingAuthority>
+    <ReferenceID>567</ReferenceID>
+  </DestinationStateApproval>
+</MovementPermit>
