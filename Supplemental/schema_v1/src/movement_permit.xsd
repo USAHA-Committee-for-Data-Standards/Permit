@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning"
+           xmlns:ecvi="http://www.usaha.org/xmlns/ecvi2"
+           targetNamespace="http://www.usaha.org/xmlns/movementPermit"
+           xmlns:this="http://www.usaha.org/xmlns/movementPermit"
+           vc:minVersion="1.0"
+           elementFormDefault="qualified"
+           version="1.0">
+
+  <xs:import
+    schemaLocation="https://raw.githubusercontent.com/AAVLD-USAHA-ITStandards/eCVI/3e4c4874f8c0be2d1ba9886a2be785356fd44f12/ecvi2.xsd"
+    namespace="http://www.usaha.org/xmlns/ecvi2"/>
+
+  <xs:annotation>
+    <xs:documentation>VERSION IN DEVELOPMENT</xs:documentation>
+  </xs:annotation>
+
+  <!-- BEGIN Document Element -->
+  <xs:element name="MovementPermit">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="ecvi:Origin" minOccurs="1" maxOccurs="1">
+          <xs:annotation>
+            <xs:documentation>This element comes from the eCVI data schema</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element ref="ecvi:Destination" minOccurs="1" maxOccurs="1">
+          <xs:annotation>
+            <xs:documentation>This element comes from the eCVI data schema</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="Conditions" minOccurs="0" maxOccurs="unbounded">
+          <xs:annotation>
+            <xs:documentation>
+              General conditions for accepting the option to move commodities.
+            </xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element ref="ecvi:Consignor" minOccurs="0" maxOccurs="1">
+          <xs:annotation>
+            <xs:documentation>This element comes from the eCVI data schema</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element ref="ecvi:Consignee" minOccurs="0" maxOccurs="1">
+          <xs:annotation>
+            <xs:documentation>This element comes from the eCVI data schema</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element ref="this:MovementInformation" minOccurs="1" maxOccurs="1" />
+        <xs:element ref="this:OwnerCertification" minOccurs="1" maxOccurs="1" />
+        <xs:element ref="this:Transportation"  minOccurs="1" maxOccurs="1" />
+        <xs:element ref="ecvi:Statements" minOccurs="0" maxOccurs="1">
+          <xs:annotation>
+            <xs:documentation>This element comes from the eCVI data schema</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element ref="ecvi:Binary" minOccurs="0" maxOccurs="unbounded">
+          <xs:annotation>
+            <xs:documentation>This element comes from the eCVI data schema</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+
+        <xs:element name="OriginStateApproval" type="this:StateApproval" minOccurs="1" maxOccurs="1" />
+        <xs:element name="DestinationStateApproval" type="this:StateApproval" minOccurs="1" maxOccurs="1" />
+      </xs:sequence>
+
+      <xs:attribute name="RequestID" type="this:UUIDv4" use="required">
+        <xs:annotation>
+          <xs:documentation>UUID to track request across the process flow</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="PermitNumber" type="ecvi:nonNullString" use="optional" />
+      <xs:attribute name="PermitStatus" type="this:PermitStatus" use="required" />
+      <xs:attribute name="ShipmentDateBegin" type="xs:date" use="required" />
+      <xs:attribute name="ShipmentDateEnd" type="xs:date" use="required" />
+    </xs:complexType>
+  </xs:element>
+
+  <!-- END Document Element -->
+
+  <!-- BEGIN Top Level Elements -->
+  <!-- These are defined here as elements simply to make it easier to navigate via Element list in some editors -->
+  <xs:element name="MovementInformation">
+    <xs:annotation>
+      <xs:documentation></xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:choice minOccurs="1" maxOccurs="1">
+          <xs:element ref="this:TotalQuantity" />
+          <xs:element ref="this:PerShipmentQuantity" />
+        </xs:choice>
+        <xs:element name="PermitItems" type="this:PermitItems" minOccurs="1" maxOccurs="1" />
+        <xs:element name="MovementType" type="this:MovementType" minOccurs="1" maxOccurs="1" />
+        <xs:choice minOccurs="1" maxOccurs="1">
+          <xs:element name="MovementPurpose" type="this:MovementPurpose" />
+          <xs:element name="MovementPurposeOther" type="ecvi:nonNullString" />
+        </xs:choice>
+        <xs:choice>
+          <xs:element ref="ecvi:SpeciesCode">
+            <xs:annotation>
+              <xs:documentation>This element comes from the eCVI data schema</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <!--From eCVI-->
+          <xs:element ref="ecvi:SpeciesOther">
+            <xs:annotation>
+              <xs:documentation>This element comes from the eCVI data schema</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:choice>
+        <!-- Should these all be moved to the movement top-level element rather than included in the permit request? These are generally not going to be a 1:1 relationship
+        <xs:element name="CVINumber" type="xs:string" minOccurs="0" maxOccurs="1" />
+        <xs:element name="vaccinationStatus" type="xs:string" minOccurs="0" maxOccurs="1" />
+        <xs:element name="tests" type="TestList" minOccurs="0" maxOccurs="1" />
+      -->
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="OwnerCertification">
+    <xs:annotation>
+      <xs:documentation></xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="DateTime" type="xs:dateTime" minOccurs="1" maxOccurs="1" />
+        <xs:element name="Representative" type="ecvi:ContactType" minOccurs="1" maxOccurs="1">
+          <xs:annotation>
+            <xs:documentation>This element comes from the eCVI data schema</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="ApprovingAuthority" type="ecvi:nonNullString" minOccurs="1" maxOccurs="1" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="Transportation">
+    <xs:annotation>
+      <xs:documentation></xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:choice>
+          <xs:element name="RouteDescription" type="ecvi:nonNullString"/>
+          <xs:element ref="this:RouteMap" />
+        </xs:choice>
+        <xs:element name="BiosecurityRequirements" type="ecvi:nonNullString" minOccurs="1" maxOccurs="1" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <!-- END Top Level Elements-->
+
+  <!-- BEGIN Second Level Elements-->
+  <xs:complexType name="StateApproval">
+    <xs:sequence>
+      <xs:element name="ApprovalDate" type="xs:dateTime" minOccurs="1" maxOccurs="1" />
+      <xs:element name="Representative" type="ecvi:ContactType" minOccurs="1" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>This element comes from the eCVI data schema</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ApprovingAuthority" type="ecvi:nonNullString" minOccurs="1" maxOccurs="1" />
+      <xs:element name="ReferenceID" type="ecvi:nonNullString" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>
+            Optional ID to be used for internal control for systems that will
+            implement support for this schema
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:element name="TotalQuantity">
+    <xs:annotation>
+      <xs:documentation></xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Quantity" type="xs:positiveInteger" minOccurs="1" maxOccurs="1" />
+        <xs:element name="Unit" type="this:Unit" minOccurs="1" maxOccurs="1" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="PerShipmentQuantity">
+    <xs:annotation>
+      <xs:documentation></xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="QuantityPerShipment" type="xs:positiveInteger" minOccurs="1" maxOccurs="1" />
+        <xs:element name="Unit" type="this:Unit" minOccurs="1" maxOccurs="1" />
+        <xs:element name="ShipmentsPerPeriod" type="xs:positiveInteger" minOccurs="1" maxOccurs="1" />
+        <xs:element name="PeriodUnit" type="this:PeriodUnit" minOccurs="1" maxOccurs="1" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+
+  <xs:simpleType name="MovementType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Into control area" />
+      <xs:enumeration value="Out of control area" />
+      <xs:enumeration value="Within control area" />
+      <xs:enumeration value="Control area to control area" />
+      <xs:enumeration value="Free area to free area" />
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="MovementPurpose">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Direct to farm" />
+      <xs:enumeration value="Direct to slaughter" />
+      <xs:enumeration value="In commerce" />
+    </xs:restriction>
+  </xs:simpleType>
+
+
+  <xs:simpleType name="PeriodUnit">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Hour" />
+      <xs:enumeration value="Day" />
+      <xs:enumeration value="Week" />
+    </xs:restriction>
+  </xs:simpleType>
+
+
+  <xs:simpleType name="PremStatus">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="FREE" />
+      <xs:enumeration value="MONITORED" />
+      <xs:enumeration value="AT_RISK" />
+      <xs:enumeration value="VACCINATED" />
+      <xs:enumeration value="SUSPECT" />
+      <xs:enumeration value="CONTACT" />
+      <xs:enumeration value="INFECTED" />
+    </xs:restriction>
+  </xs:simpleType>
+
+
+  <xs:simpleType name="PermitStatus">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="REQUESTED" />
+      <xs:enumeration value="ORIGIN-APPROVED" />
+      <xs:enumeration value="DESTINATION-APPROVED" />
+      <xs:enumeration value="ISSUED" />
+    </xs:restriction>
+  </xs:simpleType>
+
+
+  <xs:simpleType name="PermitItems">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Groups of animals" />
+      <xs:enumeration value="Identifiable animal groups" />
+      <xs:enumeration value="Animals withough ID" />
+      <xs:enumeration value="Individually identified animals" />
+      <xs:enumeration value="Feed" />
+      <xs:enumeration value="Product" />
+      <xs:enumeration value="Semen/embryos" />
+      <xs:enumeration value="Compost" />
+      <xs:enumeration value="Trucks/trailers" />
+      <xs:enumeration value="Milk" />
+      <xs:enumeration value="Manure" />
+      <xs:enumeration value="Hay/forage" />
+      <xs:enumeration value="Water" />
+      <xs:enumeration value="Other" />
+    </xs:restriction>
+  </xs:simpleType>
+
+
+  <xs:simpleType name="Unit">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Head" />
+      <xs:enumeration value="Load" />
+      <xs:enumeration value="Group" />
+      <xs:enumeration value="Gallon" />
+      <xs:enumeration value="Pound" />
+      <xs:enumeration value="Ton" />
+      <xs:enumeration value="Bale" />
+      <xs:enumeration value="Other" />
+    </xs:restriction>
+  </xs:simpleType>
+
+
+  <xs:simpleType name="UUIDv4">
+    <xs:restriction base="xs:ID">
+      <xs:pattern value="[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-[4][0-9A-Fa-f]{3}-[89ABab][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}" />
+    </xs:restriction>
+  </xs:simpleType>
+
+
+  <xs:element name="RouteMap">
+    <xs:annotation>
+      <xs:documentation> A binary image of the route that the products are intended to be transported along. </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Map" minOccurs="1" maxOccurs="unbounded">
+          <xs:annotation>
+            <xs:documentation> Should we try to impose image type, etc.? </xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:attribute name="ImageRef" type="xs:IDREF" use="required"/>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <!-- END Second Level Elements-->
+</xs:schema>
