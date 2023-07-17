@@ -49,7 +49,7 @@
         </xs:element>
         <xs:element ref="this:MovementInformation" minOccurs="1" maxOccurs="1" />
         <xs:element ref="this:OwnerCertification" minOccurs="1" maxOccurs="1" />
-        <xs:element ref="this:Transportation"  minOccurs="1" maxOccurs="1" />
+        <xs:element ref="this:Transportation"  minOccurs="0" maxOccurs="1" />
         <xs:element ref="ecvi:Statements" minOccurs="0" maxOccurs="1">
           <xs:annotation>
             <xs:documentation>This element comes from the eCVI data schema</xs:documentation>
