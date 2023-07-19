@@ -78,11 +78,11 @@
   </OwnerCertification>
 
   <Transportation>
-    <RouteDescription>Will take 4040 all the way</RouteDescription>
+    <RouteDescription>Will take 440 all the way</RouteDescription>
     <BiosecurityRequirements>Truck clean before pick up</BiosecurityRequirements>
   </Transportation>
 
-  <ecvi:Statements>Farm never broke with PRRSV</ecvi:Statements>
+  <ecvi:Statements>Farm negative for ASF</ecvi:Statements>
 
   <OriginStateApproval>
     <ApprovalDate>2022-07-05T00:00:00Z</ApprovalDate>
